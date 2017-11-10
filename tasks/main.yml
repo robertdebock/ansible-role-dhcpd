@@ -7,7 +7,7 @@
 
 - name: configure software
   file:
-    src: dhcpd.conf
+    src: files/dhcpd.conf
     dest: /etc/dhcp/dhcpd.conf
 
 - name: start and enable software
