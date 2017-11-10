@@ -1,0 +1,5 @@
+---
+packages:
+- isc-dhcp-server
+service:
+- isc-dhcp-server
