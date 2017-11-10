@@ -1,2 +1,4 @@
 - name: robertdebock.bootstrap
   src: robertdebock.bootstrap
+- name: robertdebock.lsof
+  src: robertdebock.lsof
