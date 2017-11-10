@@ -3,7 +3,7 @@
   remote_user: root
 
   roles:
-    - dhcpd
+    - ansible-role-dhcpd
 
   tasks:
     - name: check if port is open
