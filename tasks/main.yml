@@ -14,6 +14,13 @@
   with_items:
     - "{{ packages }}"
 
+- name: configure defaults for debian and ubuntu
+  template:
+    src: templates/isc-dhcp-server.j2
+    dest: /etc/default/isc-dhcp-server
+  when:
+    - ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
+
 - name: configure software
   template:
     src: templates/dhcpd.conf.j2
