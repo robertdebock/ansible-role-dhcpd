@@ -15,8 +15,8 @@
     - "{{ packages }}"
 
 - name: configure software
-  copy:
-    src: files/dhcpd.conf
+  template:
+    src: templates/dhcpd.conf.j2
     dest: /etc/dhcp/dhcpd.conf
 
 - name: start and enable software

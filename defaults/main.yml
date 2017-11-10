@@ -1,2 +1,15 @@
 ---
 # defaults file for ansible-role-dhcpd
+default_lease_time: 600
+max_lease_time: 7200
+subnet_mask: 255.255.255.0
+broadcast_address: 10.0.2.244
+routers: 10.0.2.254
+domain_name_servers: 192.168.1.1, 192.168.1.2
+domain_search: example.com
+
+subnets:
+  - network: 10.0.2.0
+    netmask: 255.255.255.0
+    range_start: 10.0.2.200
+    range_end: 10.0.2.210
