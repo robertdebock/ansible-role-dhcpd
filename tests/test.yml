@@ -7,4 +7,4 @@
 
   tasks:
     - name: check if port is open
-      shell: lsof -i:tfpt
+      shell: lsof -iUDP:67
