@@ -1,0 +1,5 @@
+---
+packages:
+- dhcp
+services:
+- dhcpd

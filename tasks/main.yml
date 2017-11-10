@@ -1,9 +1,18 @@
 ---
 # tasks file for ansible-role-template
+- name: include distribution specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}-{{ ansible_distribution_major_version}}.yml"
+    - "{{ ansible_distribution }}.yml"
+    - "default.yml"
+
 - name: install software
   package:
-    name: dhcp
+    name: "{{ item }}"
     state: present
+  with_items:
+    - "{{ packages }}"
 
 - name: configure software
   copy:
@@ -12,6 +21,8 @@
 
 - name: start and enable software
   service:
-    name: dhcpd
+    name: "{{ item }}"
     state: started
     enabled: yes
+  with_items:
+    - "{{ services }}"
