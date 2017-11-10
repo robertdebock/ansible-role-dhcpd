@@ -1,0 +1,17 @@
+---
+# tasks file for ansible-role-template
+- name: install software
+  package:
+    name: dhcp
+    state: present
+
+- name: configure software
+  file:
+    src: dhcpd.conf
+    dest: /etc/dhcp/dhcpd.conf
+
+- name: start and enable software
+  service:
+    name: dhcpd
+    state: started
+    enabled: yes

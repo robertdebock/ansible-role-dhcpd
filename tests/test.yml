@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  remote_user: root
+
+  roles:
+    - ansible-role-template
+
+  tasks:
+    - name: check if port is open
+      shell: lsof -iUDP:67
