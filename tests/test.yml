@@ -4,7 +4,3 @@
 
   roles:
     - ansible-role-dhcpd
-
-#  tasks:
-#    - name: check if port is open
-#      shell: lsof -iUDP:67
