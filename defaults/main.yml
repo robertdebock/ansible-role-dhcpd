@@ -9,6 +9,9 @@ routers: 10.0.2.254
 domain_name_servers: 192.168.1.1, 192.168.1.2
 domain_search: example.com
 
+filename: pxelinux.0
+next_server: 10.0.2.254
+
 subnets:
   - network: 10.0.2.0
     netmask: 255.255.255.0
