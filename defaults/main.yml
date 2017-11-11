@@ -4,7 +4,7 @@ ipv4_interface: eth0
 default_lease_time: 600
 max_lease_time: 7200
 subnet_mask: 255.255.255.0
-broadcast_address: 10.0.2.244
+broadcast_address: 10.0.2.255
 routers: 10.0.2.254
 domain_name_servers: 192.168.1.1, 192.168.1.2
 domain_search: example.com
