@@ -2,5 +2,5 @@
 # handlers file for ansible-role-dhcpd
 - name: restart software
   service:
-    name: dhcpd
+    name: "{{ service }}"
     state: restarted
