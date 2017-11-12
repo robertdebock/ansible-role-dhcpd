@@ -1,13 +1,11 @@
 ---
 # handlers file for ansible-role-dhcpd
-- name: include distribution specific variables
-  include_vars: "{{ item }}"
-  with_first_found:
-    - "{{ ansible_distribution }}-{{ ansible_distribution_major_version}}.yml"
-    - "{{ ansible_distribution }}.yml"
-    - "default.yml"
-
-- name: restart service
+- name: restart isc-dhcp-server
   service:
-    name: "{{ service }}"
+    name: isc-dhcp-server
+    state: restarted
+
+- name: restart dhcpd
+  service:
+    name: dhcpd
     state: restarted
