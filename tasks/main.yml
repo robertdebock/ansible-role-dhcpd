@@ -25,7 +25,7 @@
   template:
     src: templates/dhcpd.conf.j2
     dest: /etc/dhcp/dhcpd.conf
-  notify: restart software
+  notify: restart service
 
 - name: start and enable software
   service:
