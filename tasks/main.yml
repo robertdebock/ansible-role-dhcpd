@@ -25,7 +25,7 @@
   template:
     src: templates/dhcpd.conf.j2
     dest: /etc/dhcp/dhcpd.conf
-  notify: restart "{{ item }}"
+  notify: restart {{ item }}
   with_items:
     - "{{ services }}"
 
