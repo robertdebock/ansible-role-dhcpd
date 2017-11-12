@@ -11,7 +11,7 @@ subnet {{ subnet.network }} netmask {{ subnet.netmask }} {
   range {{ subnet.range_start }} {{ subnet.range_end }};
 {% if filename is defined %}  filename "{{ filename }}";
 {% endif %}
-{% if next_server is defined %}  next-server "{{ next_server }}";
+{% if next_server is defined %}  next-server {{ next_server }};
 {% endif %}
 }
 {% endfor %}
