@@ -3,8 +3,8 @@
   remote_user: root
 
   roles:
-    - ansible-role-dhcpd
-      ipv4_interface: enp0s8
+    - role: ansible-role-dhcpd
+      ipv4_interface: eth0
       default_lease_time: 60
       max_lease_time: 120
       subnet_mask: 255.255.255.0
