@@ -9,7 +9,7 @@ env:
 install:
   - pip install ansible
   - role=$(basename $(pwd) | sed 's/ansible-role-//g')
-  - ln -s ${ANSIBLE_ROLES_PATH}/$(basename $(pwd) ${role}
+  - ln -s ${ANSIBLE_ROLES_PATH}/$(basename $(pwd)) ${role}
   - ls -l ${ANSIBLE_ROLES_PATH}
 
 script:
