@@ -1,5 +1,5 @@
 ---
 packages:
-  - dhcp
+- dhcp
 services:
-  - dhcpd
+- dhcpd

@@ -1,5 +1,5 @@
 ---
 packages:
-  - isc-dhcp-server
+- isc-dhcp-server
 services:
-  - isc-dhcp-server
+- isc-dhcp-server
