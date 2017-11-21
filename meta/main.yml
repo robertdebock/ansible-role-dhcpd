@@ -38,4 +38,4 @@ galaxy_info:
     - networking
 
 dependencies:
-  - robertdebock.bootstrap
+  - robertdebock.ansible-role-bootstrap
