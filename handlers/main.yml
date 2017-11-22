@@ -4,8 +4,12 @@
   service:
     name: isc-dhcp-server
     state: restarted
+  when:
+    - ansible_virtualization_type != "docker"
 
 - name: restart dhcpd
   service:
     name: dhcpd
     state: restarted
+  when:
+    - ansible_virtualization_type != "docker"
