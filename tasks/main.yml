@@ -36,3 +36,5 @@
     enabled: yes
   with_items:
     - "{{ services }}"
+  when:
+    - ansible_virtualization_type != "docker"
