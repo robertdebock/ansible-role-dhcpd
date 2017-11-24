@@ -42,7 +42,12 @@ FILENAME can be a file like pxelinux.0.
 Dependencies
 ------------
 
-- robertdebock.bootstrap
+- robertdebock.ansible-role-bootstrap
+
+Download the dependencies by issueing this command:
+```
+ansible-galaxy install --role-file requirements.yml
+```
 
 Example Playbook
 ----------------
