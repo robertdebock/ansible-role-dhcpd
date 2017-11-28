@@ -55,7 +55,7 @@ Example Playbook
 ```
 - hosts: servers
   roles:
-    - role: ansible-role-dhcpd
+    - role: robertdebock.ansible-role-dhcpd
       ipv4_interface: eth0
       default_lease_time: 60
       max_lease_time: 120
@@ -72,6 +72,8 @@ Example Playbook
         range_start: 192.168.1.200
         range_end: 192.168.1.210
 ```
+
+Install this role using `galaxy install robertdebock.ansible-role-dhcpd`.
 
 License
 -------
