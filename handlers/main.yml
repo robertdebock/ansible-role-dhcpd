@@ -1,5 +1,5 @@
 ---
-# handlers file for ansible-role-dhcpd
+# handlers file for dhcpd
 - name: restart isc-dhcp-server
   service:
     name: isc-dhcp-server

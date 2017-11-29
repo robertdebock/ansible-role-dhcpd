@@ -1,7 +1,7 @@
-ansible-role-dhcpd
+dhcpd
 =========
 
-[![Build Status](https://travis-ci.org/robertdebock/ansible-role-dhcpd.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-dhcpd)
+[![Build Status](https://travis-ci.org/robertdebock.ansible-role-dhcpd.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-dhcpd)
 
 Provides a DHCP server for your system.
 
@@ -42,9 +42,9 @@ FILENAME can be a file like pxelinux.0.
 Dependencies
 ------------
 
-- robertdebock.ansible-role-bootstrap
+- robertdebock.bootstrap
 
-Download the dependencies by issueing this command:
+Download the dependencies by issuing this command:
 ```
 ansible-galaxy install --role-file requirements.yml
 ```
@@ -55,7 +55,7 @@ Example Playbook
 ```
 - hosts: servers
   roles:
-    - role: robertdebock.ansible-role-dhcpd
+    - role: robertdebock.dhcpd
       ipv4_interface: eth0
       default_lease_time: 60
       max_lease_time: 120
@@ -73,7 +73,7 @@ Example Playbook
         range_end: 192.168.1.210
 ```
 
-Install this role using `galaxy install robertdebock.ansible-role-dhcpd`.
+Install this role using `galaxy install robertdebock.dhcpd`.
 
 License
 -------

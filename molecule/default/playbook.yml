@@ -2,7 +2,7 @@
 - name: Converge
   hosts: all
   roles:
-    - role: ansible-role-dhcpd
+    - role: dhcpd
       ipv4_interface: eth0
       default_lease_time: 60
       max_lease_time: 120

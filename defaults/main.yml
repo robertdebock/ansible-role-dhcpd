@@ -1,5 +1,5 @@
 ---
-# defaults file for ansible-role-dhcpd
+# defaults file for dhcpd
 ipv4_interface: eth0
 default_lease_time: 600
 max_lease_time: 7200
