@@ -2,4 +2,5 @@
 packages:
   - dhcp-server
 services:
-  - dhcp-server
+  - dhcpd
+confdir: /etc

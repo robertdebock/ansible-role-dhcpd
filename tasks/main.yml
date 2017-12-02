@@ -24,7 +24,7 @@
 - name: configure software
   template:
     src: templates/dhcpd.conf.j2
-    dest: /etc/dhcp/dhcpd.conf
+    dest: "{{ confdir }}/dhcpd.conf"
   notify: restart {{ item }}
   with_items:
     - "{{ services }}"

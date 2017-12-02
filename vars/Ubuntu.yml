@@ -3,3 +3,4 @@ packages:
   - isc-dhcp-server
 services:
   - isc-dhcp-server
+confdir: /etc/dhcp
