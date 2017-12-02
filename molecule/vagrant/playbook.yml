@@ -1,12 +1,23 @@
 ---
 - name: Converge
   hosts: all
-  gather_facts: no
   become: yes
+  gather_facts: no
 
   roles:
-    - role: ansible-role-bootstrap
-
-  tasks:
-    - name: test connection
-      ping:
+    - role: ansible-role-dhcpd
+      ipv4_interface: eth0
+      default_lease_time: 60
+      max_lease_time: 120
+      subnet_mask: 255.255.255.0
+      broadcast_address: 10.0.2.255
+      routers: 10.0.2.1
+      domain_name_servers: 10.0.2.1
+      domain_search: install
+      filename: pxelinux.0
+      next_server: 10.0.2.1
+      subnets:
+        - network: 10.0.2.0
+          netmask: 255.255.255.0
+          range_start: 10.0.2.127
+          range_end: 10.0.2.254

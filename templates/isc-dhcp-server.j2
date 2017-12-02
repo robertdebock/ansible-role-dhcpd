@@ -1,2 +1,2 @@
-INTERFACESv4="{{ ipv4_interface }}"
+INTERFACESv4="{{ ansible_default_ipv4.interface | default(eth0) }}"
 INTERFACESv6=""
