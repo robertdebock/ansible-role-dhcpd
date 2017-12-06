@@ -12,7 +12,7 @@
     name: "{{ item }}"
     state: present
   with_items:
-    - "{{ packages }}"
+    - "{{ dhcpd_packages }}"
 
 - name: configure defaults for opensuse
   template:
@@ -33,10 +33,10 @@
 - name: configure software
   template:
     src: templates/dhcpd.conf.j2
-    dest: "{{ confdir }}/dhcpd.conf"
+    dest: "{{ dhcpd_confdir }}/dhcpd.conf"
   notify: restart {{ item }}
   with_items:
-    - "{{ services }}"
+    - "{{ dhcpd_services }}"
   when:
     - ansible_virtualization_type != "docker"
 
@@ -46,6 +46,6 @@
     state: started
     enabled: yes
   with_items:
-    - "{{ services }}"
+    - "{{ dhcpd_services }}"
   when:
     - ansible_virtualization_type != "docker"

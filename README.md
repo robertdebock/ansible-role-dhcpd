@@ -15,18 +15,18 @@ Role Variables
 
 ISC DHCP has quite some parameters to set. Here is a list, but please have a look at defaults/main.yml for an applied idea.
 
-- ipv4_interface - INTERFACE
-- default_lease_time - INTEGER
-- max_lease_time - INTEGER
-- subnet_mask - IPADDRESS
-- broadcast_address - IPADDRESS
-- routers - IPADDRESS
-- domain_name_servers - comma separated IPADDRESS
-- domain_search - DOMAIN
-- filename - FILENAME
-- next_server - IPADDRESS
+- dhcpd_ipv4_interface - INTERFACE
+- dhcpd_default_lease_time - INTEGER
+- dhcpd_max_lease_time - INTEGER
+- dhcpd_subnet_mask - IPADDRESS
+- dhcpd_broadcast_address - IPADDRESS
+- dhcpd_routers - IPADDRESS
+- dhcpd_domain_name_servers - comma separated IPADDRESS
+- dhcpd_domain_search - DOMAIN
+- dhcpd_filename - FILENAME
+- dhcpd_next_server - IPADDRESS
 
-subnets:
+dhcpd_subnets:
   - network - IPADDRESS
     netmask - IPADDRESS
     range_start - IPADDRESS
@@ -56,17 +56,17 @@ Example Playbook
 - hosts: servers
   roles:
     - role: robertdebock.dhcpd
-      ipv4_interface: eth0
-      default_lease_time: 60
-      max_lease_time: 120
-      subnet_mask: 255.255.255.0
-      broadcast_address: 192.168.1.255
-      routers: 192.168.1.1
-      domain_name_servers: 192.168.1.127
-      domain_search: install
-      filename: pxelinux.0
-      next_server: 192.168.1.127
-      subnets:
+      dhcpd_ipv4_interface: eth0
+      dhcpd_default_lease_time: 60
+      dhcpd_max_lease_time: 120
+      dhcpd_subnet_mask: 255.255.255.0
+      dhcpd_broadcast_address: 192.168.1.255
+      dhcpd_routers: 192.168.1.1
+      dhcpd_domain_name_servers: 192.168.1.127
+      dhcpd_domain_search: install
+      dhcpd_filename: pxelinux.0
+      dhcpd_next_server: 192.168.1.127
+      dhcpd_subnets:
       - network: 192.168.1.0
         netmask: 255.255.255.0
         range_start: 192.168.1.200

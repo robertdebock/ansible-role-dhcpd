@@ -1,17 +1,17 @@
-default-lease-time {{ default_lease_time }};
-max-lease-time {{ max_lease_time }};
-option subnet-mask {{ subnet_mask }};
-option broadcast-address {{ broadcast_address }};
-option routers {{ routers }};
-option domain-name-servers {{ domain_name_servers }};
-option domain-search "{{ domain_search }}";
+default-lease-time {{ dhcpd_default_lease_time }};
+max-lease-time {{ dhcpd_max_lease_time }};
+option subnet-mask {{ dhcpd_subnet_mask }};
+option broadcast-address {{ dhcpd_broadcast_address }};
+option routers {{ dhcpd_routers }};
+option domain-name-servers {{ dhcpd_domain_name_servers }};
+option domain-search "{{ dhcpd_domain_search }}";
 
 {% for subnet in subnets %}
-subnet {{ subnet.network }} netmask {{ subnet.netmask }} {
-  range {{ subnet.range_start }} {{ subnet.range_end }};
-{% if filename is defined %}  filename "{{ filename }}";
+subnet {{ dhcpd_subnet.network }} netmask {{ dhcpd_subnet.netmask }} {
+  range {{ dhcpd_subnet.range_start }} {{ dhcpd_subnet.range_end }};
+{% if dhcpd_filename is defined %}  filename "{{ dhcpd_filename }}";
 {% endif %}
-{% if next_server is defined %}  next-server {{ next_server }};
+{% if dhcpd_next_server is defined %}  next-server {{ dhcpd_next_server }};
 {% endif %}
 }
 {% endfor %}
