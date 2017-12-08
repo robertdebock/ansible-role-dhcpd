@@ -1,2 +1,21 @@
 ---
-# vars file for template
+# vars file for dhcpd
+dhcpd_packages:
+  Debian:
+    - isc-dhcp-server
+  default:
+    - dhcp
+  openSUSE Leap:
+    - dhcp-server
+  Ubuntu:
+    - isc-dhcp-server
+
+dhcpd_services:
+  Debian:
+    - isc-dhcp-server
+  default:
+    - dhcpd
+  openSUSE Leap:
+    - dhcpd
+  Ubuntu:
+    - isc-dhcp-server

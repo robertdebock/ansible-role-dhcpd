@@ -12,7 +12,9 @@
     name: "{{ item }}"
     state: present
   with_items:
-    - "{{ dhcpd_packages }}"
+    - "{{ dhcpd_packages[ansible_distribution ~ '-' ~ ansible_distribution_major_version]
+      | default(dhcpd_packages[ansible_distribution]
+      | default(dhcpd_packages['default'] )) }}"
 
 - name: configure defaults for opensuse
   template:
@@ -36,7 +38,9 @@
     dest: "{{ dhcpd_confdir }}/dhcpd.conf"
   notify: restart {{ item }}
   with_items:
-    - "{{ dhcpd_services }}"
+    - "{{ dhcpd_services[ansible_distribution ~ '-' ~ ansible_distribution_major_version]
+          | default(dhcpd_services[ansible_distribution]
+          | default(dhcpd_services['default'] )) }}"
   when:
     - ansible_virtualization_type != "docker"
 
@@ -46,6 +50,8 @@
     state: started
     enabled: yes
   with_items:
-    - "{{ dhcpd_services }}"
+    - "{{ dhcpd_services[ansible_distribution ~ '-' ~ ansible_distribution_major_version]
+          | default(dhcpd_services[ansible_distribution]
+          | default(dhcpd_services['default'] )) }}"
   when:
     - ansible_virtualization_type != "docker"

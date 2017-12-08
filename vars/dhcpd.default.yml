@@ -1,6 +1,2 @@
 ---
-dhcpd_packages:
-  - dhcp
-dhcpd_services:
-  - dhcpd
 dhcpd_confdir: /etc/dhcp
