@@ -6,9 +6,9 @@ option routers {{ dhcpd_routers }};
 option domain-name-servers {{ dhcpd_domain_name_servers }};
 option domain-search "{{ dhcpd_domain_search }}";
 
-{% for subnet in subnets %}
-subnet {{ dhcpd_subnet.network }} netmask {{ dhcpd_subnet.netmask }} {
-  range {{ dhcpd_subnet.range_start }} {{ dhcpd_subnet.range_end }};
+{% for subnet in dhcpd_subnets %}
+subnet {{ subnet.network }} netmask {{ subnet.netmask }} {
+  range {{ subnet.range_start }} {{ subnet.range_end }};
 {% if dhcpd_filename is defined %}  filename "{{ dhcpd_filename }}";
 {% endif %}
 {% if dhcpd_next_server is defined %}  next-server {{ dhcpd_next_server }};
