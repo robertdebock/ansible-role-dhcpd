@@ -1,12 +1,5 @@
 ---
 # tasks file for dhcpd
-- name: include distribution specific variables
-  include_vars: "{{ item }}"
-  with_first_found:
-    - "dhcpd.{{ ansible_distribution }}-{{ ansible_distribution_major_version}}.yml"
-    - "dhcpd.{{ ansible_distribution }}.yml"
-    - "dhcpd.default.yml"
-
 - name: install software
   package:
     name: "{{ item }}"
@@ -35,7 +28,9 @@
 - name: configure software
   template:
     src: templates/dhcpd.conf.j2
-    dest: "{{ dhcpd_confdir }}/dhcpd.conf"
+    dest: "{{ dhcpd_confdir[ansible_distribution ~ '-' ~ ansible_distribution_major_version]
+          | default(dhcpd_confdir[ansible_distribution]
+          | default(dhcpd_confdir['default'] )) }}/dhcpd.conf"
   notify: restart {{ item }}
   with_items:
     - "{{ dhcpd_services[ansible_distribution ~ '-' ~ ansible_distribution_major_version]

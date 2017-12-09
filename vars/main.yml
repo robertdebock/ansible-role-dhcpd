@@ -19,3 +19,7 @@ dhcpd_services:
     - dhcpd
   Ubuntu:
     - isc-dhcp-server
+
+dhcpd_confdir:
+  default: /etc/dhcp
+  openSUSE Leap: /etc
