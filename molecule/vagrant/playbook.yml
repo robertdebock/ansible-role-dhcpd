@@ -5,7 +5,7 @@
   gather_facts: no
 
   roles:
-    - role: robertdebock.dhcpd
+    - role: ansible-role-dhcpd
       dhcpd_ipv4_interface: eth0
       dhcpd_default_lease_time: 60
       dhcpd_max_lease_time: 120
