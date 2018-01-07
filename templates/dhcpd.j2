@@ -1,3 +1,4 @@
+{{ ansible_managed | comment }}
 DHCPD_INTERFACE="{{ ansible_default_ipv4.interface | default(eth0) }}"
 DHCPD6_INTERFACE=""
 DHCPD_IFUP_RESTART=""
