@@ -5,6 +5,7 @@
   strategy: free
 
   roles:
+    - role: robertdebock.bootstrap
     - role: ansible-role-dhcpd
       dhcpd_ipv4_interface: eth0
       dhcpd_default_lease_time: 60

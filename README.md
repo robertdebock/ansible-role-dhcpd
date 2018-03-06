@@ -42,6 +42,8 @@ FILENAME can be a file like pxelinux.0.
 Dependencies
 ------------
 
+You can prepare you system by including this role.
+
 - robertdebock.bootstrap
 
 Download the dependencies by issuing this command:
@@ -55,6 +57,7 @@ Example Playbook
 ```
 - hosts: servers
   roles:
+    - role: robertdebock.bootstrap
     - role: robertdebock.dhcpd
       dhcpd_ipv4_interface: eth0
       dhcpd_default_lease_time: 60

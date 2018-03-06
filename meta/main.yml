@@ -44,5 +44,4 @@ galaxy_info:
     - server
     - networking
 
-dependencies:
-  - robertdebock.bootstrap
+dependencies: []
