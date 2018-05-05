@@ -11,7 +11,7 @@
 
 - name: configure defaults for opensuse
   template:
-    src: templates/dhcpd.j2
+    src: dhcpd.j2
     dest: /etc/sysconfig/dhcpd
   when:
     - ansible_distribution == "openSUSE Leap"
@@ -19,7 +19,7 @@
 
 - name: configure defaults for debian and ubuntu
   template:
-    src: templates/isc-dhcp-server.j2
+    src: isc-dhcp-server.j2
     dest: /etc/default/isc-dhcp-server
   when:
     - ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
@@ -27,7 +27,7 @@
 
 - name: configure software
   template:
-    src: templates/dhcpd.conf.j2
+    src: dhcpd.conf.j2
     dest: "{{ dhcpd_confdir[ansible_distribution ~ '-' ~ ansible_distribution_major_version]
           | default(dhcpd_confdir[ansible_distribution]
           | default(dhcpd_confdir['default'] )) }}/dhcpd.conf"
