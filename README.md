@@ -1,4 +1,4 @@
-dhcpd
+
 =========
 
 [![Build Status](https://travis-ci.org/robertdebock/ansible-role-dhcpd.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-dhcpd)
@@ -51,7 +51,7 @@ Dependencies
 
 You can prepare you system by including this role.
 
-- robertdebock.bootstrap
+- [robertdebock.bootstrap](https://travis-ci.org/robertdebock/ansible-role-bootstrap)
 
 Download the dependencies by issuing this command:
 ```
