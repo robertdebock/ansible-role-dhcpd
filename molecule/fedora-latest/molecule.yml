@@ -8,14 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: dhcpd-ubuntu-bionic
-    image: ubuntu:bionic
+  - name: dhcpd-fedora-latest
+    image: fedora:latest
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: ubuntu-bionic
+  name: fedora-latest
 verifier:
   name: goss
   lint:
