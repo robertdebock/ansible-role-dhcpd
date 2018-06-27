@@ -1,0 +1,6 @@
+---
+# vars file for dhcpd
+dhcpd_packages:
+  - isc-dhcp-server
+
+dhcpd_service: isc-dhcp-server
