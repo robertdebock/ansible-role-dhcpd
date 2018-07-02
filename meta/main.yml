@@ -36,11 +36,11 @@ galaxy_info:
         - bionic
 
   galaxy_tags:
-    - Alpine
-    - Debian
-    - Fedora
-    - RHEL
-    - Ubuntu
+    - alpine
+    - debian
+    - fedora
+    - rhel
+    - ubuntu
     - dhcp
     - network
     - isc-dhcp-server
