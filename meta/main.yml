@@ -43,7 +43,7 @@ galaxy_info:
     - ubuntu
     - dhcp
     - network
-    - isc-dhcp-server
+    - iscdhcpserver
     - dhcpd
     - server
     - networking
