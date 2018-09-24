@@ -13,6 +13,7 @@
 - name: install software
   package:
     name: "{{ item }}"
+    state: present
   with_items:
     - "{{ dhcpd_packages }}"
 
