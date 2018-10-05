@@ -2,8 +2,8 @@
 # tasks file for dhcpd
 - name: install software
   package:
-    name: "{{ dhcpd_stable_packages[ansible_distribution]
-          | default (dhcpd_stable_packages['default'] ) }}"
+    name: "{{ dhcpd_packages[ansible_distribution]
+          | default (dhcpd_packages['default'] ) }}"
     state: "{{ dhcpd_package_state }}"
 
 - name: configure defaults for opensuse
