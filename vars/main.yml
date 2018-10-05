@@ -1,0 +1,23 @@
+---
+# vars file for dhcpd
+dhcpd_packages:
+  default:
+    - dhcp
+  Debian:
+    - isc-dhcp-server
+  openSUSE Leap:
+    - dhcp-server
+  openSUSE Tumbleweed:
+    - dhcp-server
+  Ubuntu:
+    - isc-dhcp-server
+
+dhcpd_service:
+  default: dhcpd
+  Debian: isc-dhcp-server
+  Ubuntu: isc-dhcp-server
+
+dhcpd_confdir:
+  default: /etc/dhcp
+  openSUSE Leap: /etc
+  openSUSE Tumbleweed: /etc

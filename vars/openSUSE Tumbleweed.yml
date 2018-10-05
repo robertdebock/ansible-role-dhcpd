@@ -1,8 +1,0 @@
----
-# vars file for dhcpd
-dhcpd_packages:
-  - dhcp-server
-
-dhcpd_service: dhcpd
-
-dhcpd_confdir: /etc

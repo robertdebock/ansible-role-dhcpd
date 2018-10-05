@@ -1,21 +1,10 @@
 ---
 # tasks file for dhcpd
-- name: load default variables
-  include_vars:
-    file: default.yml
-
-- name: load os-specific variables
-  include_vars: "{{ item }}"
-  with_first_found:
-    - "{{ ansible_distribution }}.yml"
-    - default.yml
-
 - name: install software
   package:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - "{{ dhcpd_packages }}"
+    name: "{{ dhcpd_stable_packages[ansible_distribution]
+          | default (dhcpd_stable_packages['default'] ) }}"
+    state: "{{ dhcpd_package_state }}"
 
 - name: configure defaults for opensuse
   template:
@@ -36,14 +25,16 @@
 - name: configure software
   template:
     src: dhcpd.conf.j2
-    dest: "{{ dhcpd_confdir }}"
+    dest: "{{ dhcpd_confdir[ansible_distribution]
+          | default (dhcpd_confdir['default'] ) }}"
   notify: restart dhcpd
   when:
     - ansible_virtualization_type != "docker"
 
 - name: start and enable software
   service:
-    name: "{{ dhcpd_service }}"
+    name: "{{ dhcpd_service[ansible_distribution]
+          | default (dhcpd_service['default'] ) }}"
     state: started
     enabled: yes
   when:
