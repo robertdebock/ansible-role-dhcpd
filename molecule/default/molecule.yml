@@ -30,8 +30,6 @@ platforms:
     image: fedora:latest
   - name: dhcpd-fedora-rawhide
     image: fedora:rawhide
-  - name: dhcpd-gentoo
-    image: gentoo/stage3-amd64
   - name: dhcpd-opensuse-leap
     image: opensuse:leap
   - name: dhcpd-opensuse-tumbleweed
