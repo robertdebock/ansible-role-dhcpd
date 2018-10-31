@@ -1,80 +1,105 @@
-
+dhcpd
 =========
 
 [![Build Status](https://travis-ci.org/robertdebock/ansible-role-dhcpd.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-dhcpd)
 
 Installs and configures a DHCP server for your system.
 
-[Unit tests](https://travis-ci.org/robertdebock/ansible-role-clamav) are done on every commit and periodically.
 
-If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-clamav/issues)
+Example Playbook
+----------------
 
-To test this role locally please use [Molecule](https://github.com/metacloud/molecule):
+This example is taken from `molecule/default/playbook.yml`:
 ```
-pip install molecule
-molecule test
+---
+- name: Converge
+  hosts: all
+  gather_facts: false
+
+  vars:
+    dhcpd_ipv4_interface: eth0
+    dhcpd_default_lease_time: 60
+    dhcpd_max_lease_time: 120
+    dhcpd_subnet_mask: 255.255.255.0
+    dhcpd_broadcast_address: 10.0.2.255
+    dhcpd_routers: 10.0.2.1
+    dhcpd_domain_name_servers: 10.0.2.1
+    dhcpd_domain_search: install
+    dhcpd_filename: pxelinux.0
+    dhcpd_next_server: 10.0.2.1
+    dhcpd_subnets:
+      - network: 10.0.2.0
+        netmask: 255.255.255.0
+        range_start: 10.0.2.127
+        range_end: 10.0.2.254
+
+  roles:
+    - robertdebock.bootstrap
+    - robertdebock.dhcpd
+
 ```
-There are many scenarios available, please have a look in the `molecule/` directory.
+
+Role Variables
+--------------
+
+These variables are set in `defaults/main.yml`:
+```
+---
+# defaults file for dhcpd
+
+# Setting applicable for the global scope.
+dhcpd_default_lease_time: 600
+dhcpd_max_lease_time: 7200
+dhcpd_subnet_mask: 255.255.255.0
+dhcpd_broadcast_address: 10.0.2.255
+dhcpd_routers: 10.0.2.254
+dhcpd_domain_name_servers: 192.168.1.1, 192.168.1.2
+dhcpd_domain_search: example.com
+
+# The image to serve for PXE booting.
+dhcpd_filename: pxelinux.0
+# Where the image can be downloaded from.
+dhcpd_next_server: 10.0.2.254
+
+# DHCP works with subnets, a list containing properties per subnet.
+dhcpd_subnets:
+  - network: 10.0.2.0
+    netmask: 255.255.255.0
+    range_start: 10.0.2.200
+    range_end: 10.0.2.210
+
+# To update all packages installed by this roles, set `dhcpd_package_state` to `latest`.
+dhcpd_package_state: present
+
+```
+
+Requirements
+------------
+
+- Access to a repository containing packages, likely on the internet.
+- A recent version of Ansible. (Tests run on the last 3 release of Ansible.)
+
+The following roles can be installed to ensure all requirements are met, using `ansible-galaxy install -r requirements.yml`:
+
+---
+- robertdebock.bootstrap
+
 
 Context
---------
+-------
+
 This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://robertdebock.nl/) for further information.
 
 Here is an overview of related roles:
 ![dependencies](https://raw.githubusercontent.com/robertdebock/drawings/artifacts/dhcpd.png "Dependency")
 
-Requirements
-------------
-
-Access to a repository to install the dhcp server package from.
-
-Role Variables
---------------
-
-ISC DHCP has quite some parameters to set. Here is a list, but please have a look at defaults/main.yml for an applied idea.
-
-- dhcpd_ipv4_interface - INTERFACE
-- dhcpd_default_lease_time - INTEGER
-- dhcpd_max_lease_time - INTEGER
-- dhcpd_subnet_mask - IPADDRESS
-- dhcpd_broadcast_address - IPADDRESS
-- dhcpd_routers - IPADDRESS
-- dhcpd_domain_name_servers - comma separated IPADDRESS
-- dhcpd_domain_search - DOMAIN
-- dhcpd_filename - FILENAME
-- dhcpd_next_server - IPADDRESS
-
-dhcpd_subnets:
-  - network - IPADDRESS
-    netmask - IPADDRESS
-    range_start - IPADDRESS
-    range_end - IPADDRESS
-
-Where:
-INTERFACE can be eth0 for example.
-INTEGER can be 600 for example.
-IPADDRESS can be 192.168.0.0 or 172.16.0.255 for example.
-DOMAIN can be a string like example.com.
-FILENAME can be a file like pxelinux.0.
-
-Dependencies
-------------
-
-You can prepare you system by including this role.
-
-- [robertdebock.bootstrap](https://travis-ci.org/robertdebock/ansible-role-bootstrap)
-
-Download the dependencies by issuing this command:
-```
-ansible-galaxy install --role-file requirements.yml
-```
 
 Compatibility
 -------------
 
 This role has been tested against the following distributions and Ansible version:
 
-|distribution|ansible 2.4|ansible 2.5|ansible 2.6|ansible-2.7|ansible-devel|
+|distribution|ansible 2.4|ansible 2.5|ansible 2.6|ansible 2.7|ansible devel|
 |------------|-----------|-----------|-----------|-----------|-------------|
 |alpine-edge*|yes|yes|yes|yes|yes*|
 |alpine-latest|yes|yes|yes|yes|yes*|
@@ -92,39 +117,28 @@ This role has been tested against the following distributions and Ansible versio
 |ubuntu-devel*|yes|yes|yes|yes|yes*|
 |ubuntu-latest|yes|yes|yes|yes|yes*|
 
-The star means the build may fail, it's marked as an experimental build.
+A single star means the build may fail, it's marked as an experimental build.
 
-Example Playbook
-----------------
+Testing
+-------
 
+[Unit tests](https://travis-ci.org/robertdebock/ansible-role-dhcpd) are done on every commit and periodically.
+
+If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-dhcpd/issues)
+
+To test this role locally please use [Molecule](https://github.com/metacloud/molecule):
 ```
-- hosts: servers
-  roles:
-    - role: robertdebock.bootstrap
-    - role: robertdebock.dhcpd
-      dhcpd_ipv4_interface: eth0
-      dhcpd_default_lease_time: 60
-      dhcpd_max_lease_time: 120
-      dhcpd_subnet_mask: 255.255.255.0
-      dhcpd_broadcast_address: 192.168.1.255
-      dhcpd_routers: 192.168.1.1
-      dhcpd_domain_name_servers: 192.168.1.127
-      dhcpd_domain_search: install
-      dhcpd_filename: pxelinux.0
-      dhcpd_next_server: 192.168.1.127
-      dhcpd_subnets:
-      - network: 192.168.1.0
-        netmask: 255.255.255.0
-        range_start: 192.168.1.200
-        range_end: 192.168.1.210
+pip install molecule
+molecule test
 ```
+There are many specific scenarios available, please have a look in the `molecule/` directory.
 
-Install this role using `galaxy install robertdebock.dhcpd`.
 
 License
 -------
 
-Apache License, Version 2.0
+Apache-2.0
+
 
 Author Information
 ------------------
