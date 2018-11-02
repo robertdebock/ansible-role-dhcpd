@@ -1,6 +1,6 @@
 ---
 # vars file for dhcpd
-dhcpd_packages:
+_dhcpd_packages:
   default:
     - dhcp
   Debian:
@@ -12,12 +12,18 @@ dhcpd_packages:
   Ubuntu:
     - isc-dhcp-server
 
-dhcpd_service:
+dhcpd_packages: "{{ _dhcpd_packages[ansible_distribution] | default (_dhcpd_packages['default'] ) }}"
+
+_dhcpd_service:
   default: dhcpd
   Debian: isc-dhcp-server
   Ubuntu: isc-dhcp-server
 
-dhcpd_confdir:
+dhcpd_service: "{{ _dhcpd_service[ansible_distribution] | default (_dhcpd_service['default'] ) }}"
+
+_dhcpd_confdir:
   default: /etc/dhcp
   openSUSE Leap: /etc
   openSUSE Tumbleweed: /etc
+
+dhcpd_confdir: "{{ _dhcpd_confdir[ansible_distribution] | default (_dhcpd_confdir['default'] ) }}"

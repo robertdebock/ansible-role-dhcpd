@@ -2,8 +2,7 @@
 # tasks file for dhcpd
 - name: install software
   package:
-    name: "{{ dhcpd_packages[ansible_distribution]
-          | default (dhcpd_packages['default'] ) }}"
+    name: "{{ dhcpd_packages }}"
     state: "{{ dhcpd_package_state }}"
 
 - name: configure defaults for opensuse
@@ -13,6 +12,7 @@
   when:
     - ansible_distribution == "openSUSE Leap"
     - ansible_virtualization_type != "docker"
+  notify: restart dhcpd
 
 - name: configure defaults for debian and ubuntu
   template:
@@ -25,16 +25,14 @@
 - name: configure software
   template:
     src: dhcpd.conf.j2
-    dest: "{{ dhcpd_confdir[ansible_distribution]
-          | default (dhcpd_confdir['default'] ) }}"
+    dest: "{{ dhcpd_confdir }}"
   notify: restart dhcpd
   when:
     - ansible_virtualization_type != "docker"
 
 - name: start and enable software
   service:
-    name: "{{ dhcpd_service[ansible_distribution]
-          | default (dhcpd_service['default'] ) }}"
+    name: "{{ dhcpd_service }}"
     state: started
     enabled: yes
   when:

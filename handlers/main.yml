@@ -2,8 +2,7 @@
 # handlers file for dhcpd
 - name: restart dhcpd
   service:
-    name: "{{ dhcpd_service[ansible_distribution]
-          | default (dhcpd_service['default'] ) }}"
+    name: "{{ dhcpd_service }}"
     state: restarted
   when:
     - ansible_virtualization_type != "docker"
