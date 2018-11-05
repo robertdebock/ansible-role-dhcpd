@@ -3,8 +3,7 @@ dhcpd
 
 [![Build Status](https://travis-ci.org/robertdebock/ansible-role-dhcpd.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-dhcpd)
 
-Installs and configures a DHCP server for your system.
-
+The purpose of this role is to install and configure dhcpd on your system.
 
 Example Playbook
 ----------------
