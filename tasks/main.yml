@@ -25,7 +25,7 @@
 - name: configure software
   template:
     src: dhcpd.conf.j2
-    dest: "{{ dhcpd_confdir }}"
+    dest: "{{ dhcpd_confdir }}/dhcpd.conf"
   notify: restart dhcpd
   when:
     - ansible_virtualization_type != "docker"
