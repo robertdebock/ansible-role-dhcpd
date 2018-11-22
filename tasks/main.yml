@@ -11,7 +11,7 @@
     dest: /etc/sysconfig/dhcpd
   when:
     - ansible_distribution == "openSUSE Leap"
-    - ansible_virtualization_type != "docker"
+    - ansible_virtualization_type != "docker" or dhcpd_ignore_docker
   notify: restart dhcpd
 
 - name: configure defaults for debian and ubuntu
@@ -20,7 +20,7 @@
     dest: /etc/default/isc-dhcp-server
   when:
     - ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
-    - ansible_virtualization_type != "docker"
+    - ansible_virtualization_type != "docker" or dhcpd_ignore_docker
 
 - name: configure software
   template:
@@ -28,7 +28,7 @@
     dest: "{{ dhcpd_confdir }}/dhcpd.conf"
   notify: restart dhcpd
   when:
-    - ansible_virtualization_type != "docker"
+    - ansible_virtualization_type != "docker" or dhcpd_ignore_docker
 
 - name: start and enable software
   service:
@@ -36,4 +36,4 @@
     state: started
     enabled: yes
   when:
-    - ansible_virtualization_type != "docker"
+    - ansible_virtualization_type != "docker" or dhcpd_ignore_docker
