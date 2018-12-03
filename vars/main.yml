@@ -14,6 +14,20 @@ _dhcpd_packages:
 
 dhcpd_packages: "{{ _dhcpd_packages[ansible_distribution] | default (_dhcpd_packages['default'] ) }}"
 
+_dhcpd_defaults_src:
+  Debian: isc-dhcp-server.j2
+  openSUSE Leap: dhcpd.j2
+  Ubuntu: isc-dhcp-server.j2
+
+dhcpd_defaults_src: "{{ _dhcpd_defaults_src[ansible_distribution] }}"
+
+_dhcpd_defaults_dest:
+  Debian: /etc/default/isc-dhcp-server
+  openSUSE Leap: /etc/sysconfig/dhcpd
+  Ubuntu: /etc/default/isc-dhcp-server
+
+dhcpd_defaults_dest: "{{ _dhcpd_defaults_dest[ansible_distribution] }}"
+
 _dhcpd_service:
   default: dhcpd
   Debian: isc-dhcp-server

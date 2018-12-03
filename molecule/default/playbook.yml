@@ -22,4 +22,5 @@
 
   roles:
     - robertdebock.bootstrap
+    - robertdebock.apt_autostart
     - ansible-role-dhcpd
