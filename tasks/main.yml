@@ -1,9 +1,12 @@
 ---
 # tasks file for dhcpd
-- name: install software
+- name: install dhcpd software
   package:
     name: "{{ dhcpd_packages }}"
     state: "{{ dhcpd_package_state }}"
+  register: dhcpd_install_dhcpd_software
+  until: dhcpd_install_dhcpd_software is succeeded
+  retries: 3
 
 - name: configure defaults
   template:
