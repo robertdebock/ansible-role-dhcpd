@@ -34,8 +34,10 @@ platforms:
     image: opensuse:leap
   - name: dhcpd-opensuse-tumbleweed
     image: opensuse:tumbleweed
-  - name: dhcpd-ubuntu-artful
-    image: ubuntu:artful
+  - name: dhcpd-ubuntu-latest
+    image: ubuntu:latest
+  - name: dhcpd-ubuntu-rolling
+    image: ubuntu:rolling
   - name: dhcpd-ubuntu-devel
     image: ubuntu:devel
   - name: dhcpd-ubuntu-latest
