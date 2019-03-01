@@ -7,8 +7,6 @@ _dhcpd_packages:
     - isc-dhcp-server
   openSUSE Leap:
     - dhcp-server
-  openSUSE Tumbleweed:
-    - dhcp-server
   Ubuntu:
     - isc-dhcp-server
 
@@ -38,6 +36,5 @@ dhcpd_service: "{{ _dhcpd_service[ansible_distribution] | default (_dhcpd_servic
 _dhcpd_confdir:
   default: /etc/dhcp
   openSUSE Leap: /etc
-  openSUSE Tumbleweed: /etc
 
 dhcpd_confdir: "{{ _dhcpd_confdir[ansible_distribution] | default (_dhcpd_confdir['default'] ) }}"
