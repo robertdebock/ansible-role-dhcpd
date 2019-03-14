@@ -13,7 +13,7 @@
     src: "{{ dhcpd_defaults_src }}"
     dest: "{{ dhcpd_defaults_dest }}"
   when:
-    - ansible_virtualization_type != "docker" or dhcpd_ignore_docker
+    - ansible_virtualization_type != "docker"
     - ansible_distribution == "Debian" or
       ansible_distribution == "openSUSE Leap" or
       ansible_distribution == "Ubuntu"
@@ -25,7 +25,7 @@
     dest: "{{ dhcpd_confdir }}/dhcpd.conf"
   notify: restart dhcpd
   when:
-    - ansible_virtualization_type != "docker" or dhcpd_ignore_docker
+    - ansible_virtualization_type != "docker"
 
 - name: start and enable software
   service:
@@ -33,4 +33,4 @@
     state: started
     enabled: yes
   when:
-    - ansible_virtualization_type != "docker" or dhcpd_ignore_docker
+    - ansible_virtualization_type != "docker"
