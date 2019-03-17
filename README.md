@@ -16,17 +16,6 @@ This example is taken from `molecule/default/playbook.yml`:
   become: yes
   gather_facts: yes
 
-  roles:
-    - robertdebock.dhcpd
-```
-
-The machine you are running this on, may need to be prepared. Tests have been done on machines prepared by this playbook:
-```yaml
----
-- name: Prepare
-  hosts: all
-  gather_facts: no
-
   vars:
     dhcpd_ipv4_interface: eth0
     dhcpd_default_lease_time: 60
@@ -43,6 +32,17 @@ The machine you are running this on, may need to be prepared. Tests have been do
         netmask: 255.255.255.0
         range_start: 10.0.2.127
         range_end: 10.0.2.254
+
+  roles:
+    - robertdebock.dhcpd
+```
+
+The machine you are running this on, may need to be prepared. Tests have been done on machines prepared by this playbook:
+```yaml
+---
+- name: Prepare
+  hosts: all
+  gather_facts: no
 
   roles:
     - robertdebock.bootstrap
