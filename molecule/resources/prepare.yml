@@ -1,7 +1,7 @@
 ---
-- name: Converge
+- name: Prepare
   hosts: all
-  gather_facts: false
+  gather_facts: no
 
   vars:
     dhcpd_ipv4_interface: eth0
@@ -23,4 +23,3 @@
   roles:
     - robertdebock.bootstrap
     - robertdebock.apt_autostart
-    - ansible-role-dhcpd
