@@ -36,5 +36,6 @@ dhcpd_service: "{{ _dhcpd_service[ansible_distribution] | default (_dhcpd_servic
 _dhcpd_confdir:
   default: /etc/dhcp
   openSUSE Leap: /etc
+  Archlinux: /etc
 
 dhcpd_confdir: "{{ _dhcpd_confdir[ansible_distribution] | default (_dhcpd_confdir['default'] ) }}"
