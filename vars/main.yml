@@ -5,37 +5,32 @@ _dhcpd_packages:
     - dhcp
   Debian:
     - isc-dhcp-server
-  openSUSE Leap:
+  Suse:
     - dhcp-server
-  Ubuntu:
-    - isc-dhcp-server
 
-dhcpd_packages: "{{ _dhcpd_packages[ansible_distribution] | default (_dhcpd_packages['default'] ) }}"
+dhcpd_packages: "{{ _dhcpd_packages[ansible_os_family] | default (_dhcpd_packages['default'] ) }}"
 
 _dhcpd_defaults_src:
   Debian: isc-dhcp-server.j2
-  openSUSE Leap: dhcpd.j2
-  Ubuntu: isc-dhcp-server.j2
+  Suse: dhcpd.j2
 
-dhcpd_defaults_src: "{{ _dhcpd_defaults_src[ansible_distribution] }}"
+dhcpd_defaults_src: "{{ _dhcpd_defaults_src[ansible_os_family] }}"
 
 _dhcpd_defaults_dest:
   Debian: /etc/default/isc-dhcp-server
-  openSUSE Leap: /etc/sysconfig/dhcpd
-  Ubuntu: /etc/default/isc-dhcp-server
+  Suse: /etc/sysconfig/dhcpd
 
-dhcpd_defaults_dest: "{{ _dhcpd_defaults_dest[ansible_distribution] }}"
+dhcpd_defaults_dest: "{{ _dhcpd_defaults_dest[ansible_os_family] }}"
 
 _dhcpd_service:
   default: dhcpd
   Debian: isc-dhcp-server
-  Ubuntu: isc-dhcp-server
 
-dhcpd_service: "{{ _dhcpd_service[ansible_distribution] | default (_dhcpd_service['default'] ) }}"
+dhcpd_service: "{{ _dhcpd_service[ansible_os_family] | default (_dhcpd_service['default'] ) }}"
 
 _dhcpd_confdir:
   default: /etc/dhcp
-  openSUSE Leap: /etc
+  Suse: /etc
   Archlinux: /etc
 
-dhcpd_confdir: "{{ _dhcpd_confdir[ansible_distribution] | default (_dhcpd_confdir['default'] ) }}"
+dhcpd_confdir: "{{ _dhcpd_confdir[ansible_os_family] | default (_dhcpd_confdir['default'] ) }}"
