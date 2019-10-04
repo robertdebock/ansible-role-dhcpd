@@ -13,9 +13,8 @@
     src: "{{ dhcpd_defaults_src }}"
     dest: "{{ dhcpd_defaults_dest }}"
   when:
-    - ansible_distribution == "Debian" or
-      ansible_distribution == "openSUSE Leap" or
-      ansible_distribution == "Ubuntu"
+    - ansible_os_family == "Debian" or
+      ansible_distribution == "openSUSE Leap"
   notify: restart dhcpd
 
 - name: configure software
