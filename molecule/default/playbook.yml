@@ -16,10 +16,10 @@
     dhcpd_filename: pxelinux.0
     dhcpd_next_server: 10.0.2.1
     dhcpd_subnets:
-      - network: 10.0.2.0
+      - network: 172.17.0.0
         netmask: 255.255.255.0
-        range_start: 10.0.2.127
-        range_end: 10.0.2.254
+        range_start: 172.17.0.127
+        range_end: 172.17.0.254
 
   roles:
     - ansible-role-dhcpd
