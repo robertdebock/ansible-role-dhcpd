@@ -5,5 +5,16 @@
   become: yes
 
   roles:
-    - robertdebock.bootstrap
-    - robertdebock.apt_autostart
+    - role: robertdebock.bootstrap
+    - role: robertdebock.apt_autostart
+    - role: robertdebock.code_dependencies
+
+- name: Prepare controller
+  hosts: localhost
+  become: yes
+
+  tasks:
+    - name: install netaddr
+      pip:
+        name: netaddr
+        state: present

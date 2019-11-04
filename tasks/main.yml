@@ -12,6 +12,7 @@
   template:
     src: "{{ dhcpd_defaults_src }}"
     dest: "{{ dhcpd_defaults_dest }}"
+    backup: yes
   when:
     - ansible_os_family == "Debian" or
       ansible_distribution == "openSUSE Leap"
@@ -21,6 +22,7 @@
   template:
     src: dhcpd.conf.j2
     dest: "{{ dhcpd_confdir }}/dhcpd.conf"
+    backup: yes
   notify: restart dhcpd
 
 - name: start and enable software

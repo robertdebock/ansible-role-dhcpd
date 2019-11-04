@@ -21,21 +21,11 @@ This example is taken from `molecule/resources/playbook.yml`:
   gather_facts: yes
 
   vars:
-    dhcpd_ipv4_interface: eth0
-    dhcpd_default_lease_time: 60
-    dhcpd_max_lease_time: 120
-    dhcpd_subnet_mask: 255.255.255.0
-    dhcpd_broadcast_address: 10.0.2.255
-    dhcpd_routers: 10.0.2.1
-    dhcpd_domain_name_servers: 10.0.2.1
-    dhcpd_domain_search: install
-    dhcpd_filename: pxelinux.0
-    dhcpd_next_server: 10.0.2.1
     dhcpd_subnets:
-      - network: 10.0.2.0
-        netmask: 255.255.255.0
-        range_start: 10.0.2.127
-        range_end: 10.0.2.254
+      - network: "{{ ansible_default_ipv4.network }}"
+        netmask: "{{ ansible_default_ipv4.netmask }}"
+        range_start: "{{ ansible_default_ipv4.network | ipmath(1) }}"
+        range_end: "{{ ansible_default_ipv4.broadcast | ipmath(-1) }}"
 
   roles:
     - robertdebock.dhcpd
@@ -50,8 +40,19 @@ The machine you are running this on, may need to be prepared.
   become: yes
 
   roles:
-    - robertdebock.bootstrap
-    - robertdebock.apt_autostart
+    - role: robertdebock.bootstrap
+    - role: robertdebock.apt_autostart
+    - role: robertdebock.code_dependencies
+
+- name: Prepare controller
+  hosts: localhost
+  become: yes
+
+  tasks:
+    - name: install netaddr
+      pip:
+        name: netaddr
+        state: present
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
@@ -99,8 +100,9 @@ The following roles can be installed to ensure all requirements are met, using `
 
 ```yaml
 ---
-- robertdebock.bootstrap
 - robertdebock.apt_autostart
+- robertdebock.bootstrap
+- robertdebock.core_dependencies
 
 ```
 
