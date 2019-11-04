@@ -9,7 +9,9 @@ option domain-search "{{ dhcpd_domain_search }}";
 
 {% for subnet in dhcpd_subnets %}
 subnet {{ subnet.network }} netmask {{ subnet.netmask }} {
+{% if subnet.range_start is defined and subnet.range_end is defined %}
   range {{ subnet.range_start }} {{ subnet.range_end }};
+{% endif %}
 {% if dhcpd_filename is defined %}  filename "{{ dhcpd_filename }}";
 {% endif %}
 {% if dhcpd_next_server is defined %}  next-server {{ dhcpd_next_server }};

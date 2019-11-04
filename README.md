@@ -23,9 +23,7 @@ This example is taken from `molecule/resources/playbook.yml`:
   vars:
     dhcpd_subnets:
       - network: "{{ ansible_default_ipv4.network }}"
-        netmask: "{{ ansible_default_ipv4.netmask }}"
-        range_start: "{{ ansible_default_ipv4.network | ipmath(1) }}"
-        range_end: "{{ ansible_default_ipv4.broadcast | ipmath(-1) }}"
+        netmask: 255.255.255.0
 
   roles:
     - robertdebock.dhcpd
@@ -42,17 +40,7 @@ The machine you are running this on, may need to be prepared.
   roles:
     - role: robertdebock.bootstrap
     - role: robertdebock.apt_autostart
-    - role: robertdebock.code_dependencies
-
-- name: Prepare controller
-  hosts: localhost
-  become: yes
-
-  tasks:
-    - name: install netaddr
-      pip:
-        name: netaddr
-        state: present
+    - role: robertdebock.core_dependencies
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
