@@ -117,7 +117,6 @@ This role has been tested on these [container images](https://hub.docker.com/):
 |debian|latest|no|
 |fedora|latest|no|
 |fedora|rawhide|yes|
-|opensuse|latest|no|
 |ubuntu|rolling|yes|
 |ubuntu|devel|yes|
 |ubuntu|latest|no|
@@ -130,6 +129,16 @@ This role has been tested on these Ansible versions:
 
 The indicator '\~=' means [compatible with](https://www.python.org/dev/peps/pep-0440/#compatible-release). For example 'ansible\~=2.8' would pick the latest ansible-2.8, for example ansible-2.8.6.
 
+Exceptions
+----------
+
+Some variarations of the build matrix do not work. These are the variations and reasons why the build won't work:
+
+| variation                 | reason                 |
+|---------------------------|------------------------|
+| Suse | Starting ISC DHCPv4 Server chown: invalid user: 'dhcpd:root
+shadow
+... |
 
 
 
