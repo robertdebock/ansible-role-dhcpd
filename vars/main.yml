@@ -40,9 +40,3 @@ _dhcpd_confdir:
   Archlinux: /etc
 
 dhcpd_confdir: "{{ _dhcpd_confdir[ansible_os_family] | default (_dhcpd_confdir['default'] ) }}"
-
-_dhcpd_service_use:
-  default: systemd
-  Debian: sysvinit
-
-dhcpd_service_use: "{{ _dhcpd_service_use[ansible_os_family] | default(_dhcpd_service_use['default']) }}"

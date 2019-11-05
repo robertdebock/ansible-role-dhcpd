@@ -4,4 +4,3 @@
   service:
     name: "{{ dhcpd_service }}"
     state: restarted
-    use: "{{ dhcpd_service_use }}"

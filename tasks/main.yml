@@ -26,8 +26,28 @@
   notify: restart dhcpd
 
 - name: start and enable software
-  service:
-    name: "{{ dhcpd_service }}"
-    state: started
-    enabled: yes
-    use: "{{ dhcpd_service_use }}"
+  block:
+    - name: start and enable software
+      service:
+        name: "{{ dhcpd_service }}"
+        state: started
+        enabled: yes
+  rescue:
+    - name: install procps
+      package:
+        name: procps
+        state: present
+
+    - name: stop dhcpd
+      command: pkill dhcpd
+
+    - name: remove pid file
+      file:
+        path: /var/run/dhcpd.pid
+        state: absent
+
+    - name: start and enable software again
+      service:
+        name: "{{ dhcpd_service }}"
+        state: started
+        enabled: yes
