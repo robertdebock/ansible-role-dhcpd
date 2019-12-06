@@ -1,4 +1,7 @@
 ---
+#
+# Ansible managed
+#
 repository:
   description: Install and configure dhcpd on your system.
   homepage: https://robertdebock.nl/
