@@ -39,6 +39,5 @@ dhcpd_service: "{{ _dhcpd_service[ansible_os_family] | default (_dhcpd_service['
 _dhcpd_confdir:
   default: /etc/dhcp
   Suse: /etc
-  Archlinux: /etc
 
 dhcpd_confdir: "{{ _dhcpd_confdir[ansible_os_family] | default (_dhcpd_confdir['default'] ) }}"
