@@ -22,7 +22,7 @@ This example is taken from `molecule/resources/converge.yml` and is tested on ea
         netmask: 255.255.255.0
 
   roles:
-    - robertdebock.dhcpd
+    - role: robertdebock.dhcpd
 ```
 
 The machine may need to be prepared using `molecule/resources/prepare.yml`:
