@@ -1,20 +1,41 @@
 {{ ansible_managed | comment }}
-default-lease-time {{ dhcpd_default_lease_time }};
-max-lease-time {{ dhcpd_max_lease_time }};
-option subnet-mask {{ dhcpd_subnet_mask }};
-option broadcast-address {{ dhcpd_broadcast_address }};
-option routers {{ dhcpd_routers }};
-option domain-name-servers {{ dhcpd_domain_name_servers }};
-option domain-search "{{ dhcpd_domain_search }}";
 
-{% for subnet in dhcpd_subnets %}
-subnet {{ subnet.network }} netmask {{ subnet.netmask }} {
-{% if subnet.range_start is defined and subnet.range_end is defined %}
-  range {{ subnet.range_start }} {{ subnet.range_end }};
-{% endif %}
-{% if dhcpd_filename is defined %}  filename "{{ dhcpd_filename }}";
-{% endif %}
-{% if dhcpd_next_server is defined %}  next-server {{ dhcpd_next_server }};
-{% endif %}
-}
+# GLOBAL CONFIG SECTION
+{% if 'parameters' in  dhcpd_global_statements %}
+{% for parameter, value in dhcpd_global_statements.parameters.items() %}
+    {{ parameter }} {{ value }};
 {% endfor %}
+{% endif %}
+{% if 'options' in dhcpd_global_statements %}
+{% for option, value in dhcpd_global_statements.options.items() %}
+    option {{ option }} {{ value }};
+{% endfor %}
+{% endif %}
+
+# SUBNET GENERATED SECTION
+{# empoty line is needed for  preaty rendering#}
+
+{% for subnet_statement in dhcpd_subnets %}
+{% if subnet_statement.subnet | ipaddr('network') %}
+subnet {{ subnet_statement.subnet | ipaddr('network') }} netmask {{ subnet_statement.subnet | ipaddr('netmask') }} {
+{% if 'parameters' in  subnet_statement %}
+{% for parameter, value in subnet_statement.parameters.items() %}
+    {{ parameter }} {{ value }};
+{% endfor %}
+{% endif %}
+{% if 'options' in subnet_statement %}
+{% for option, value in subnet_statement.options.items() %}
+    option {{ option }} {{ value }};
+{% endfor %}
+{% endif %}
+{# don't remove acolade it's not a typo #}
+}
+{# empoty line is needed for  preaty rendering#}
+
+{% else %}
+
+# Ansible was not able to generate subnet: {{ subnet_statement }}, it seems this is not a valid subnet_statement
+
+{% endif %}
+{% endfor %}
+

@@ -1,4 +1,3 @@
 {{ ansible_managed | comment }}
 INTERFACESv4="{% if ansible_default_ipv4 is defined %}{{ ansible_default_ipv4.interface }}{% else %}eth0{% endif %}"
-
 INTERFACESv6=""

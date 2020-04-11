@@ -18,8 +18,9 @@ This example is taken from `molecule/resources/converge.yml` and is tested on ea
 
   vars:
     dhcpd_subnets:
-      - network: "{{ ansible_default_ipv4.network }}"
-        netmask: 255.255.255.0
+      - subnet: "{{ ansible_default_ipv4.network }}/{{ansible_default_ipv4.netmask }}"
+        paramaters:
+          interface: "{{ ansible_default_ipv4.interface }}"
 
   roles:
     - role: robertdebock.dhcpd
@@ -78,26 +79,21 @@ dhcpd_filename: pxelinux.0
 # Where the image can be downloaded from.
 dhcpd_next_server: 10.0.2.254
 
-# DHCP works with subnets, a list containing properties per subnet.
+# DHCP works with subnets, a list containing predefined format of dicts with properties and options per subnet.
 dhcpd_subnets:
-  - network: 10.0.2.0
-    netmask: 255.255.255.0
-    range_start: 10.0.2.200
-    range_end: 10.0.2.210
+  - subnet: "10.0.2.0/24"
+    parameters:
+        range: "10.0.2.30  10.0.0.200"
+        next-server: "10.0.0.0"
+    options:
+        domain-name-servers: "10.0.2.1"
 ```
 
 ## Requirements
 
 - Access to a repository containing packages, likely on the internet.
 - A recent version of Ansible. (Tests run on the current, previous and next release of Ansible.)
-
-The following roles can be installed to ensure all requirements are met, using `ansible-galaxy install -r requirements.yml`:
-
-```yaml
----
-- robertdebock.apt_autostart
-- robertdebock.bootstrap
-- robertdebock.core_dependencies
+- python netaddr lib
 
 ```
 

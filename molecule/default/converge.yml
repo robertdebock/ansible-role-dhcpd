@@ -6,8 +6,9 @@
 
   vars:
     dhcpd_subnets:
-      - network: "{{ ansible_default_ipv4.network }}"
-        netmask: 255.255.255.0
+      - subnet: "{{ ansible_default_ipv4.network }}/ansible_default_ipv4.subnet"
+        parameters:
+          interface: "{{ ansible_default_ipv4.interface }}"
 
   roles:
     - role: ansible-role-dhcpd
