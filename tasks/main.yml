@@ -1,5 +1,8 @@
 ---
 # tasks file for dhcpd
+- name: include assert.yml
+  include_tasks: assert.yml
+
 - name: install dhcpd software
   package:
     name: "{{ dhcpd_packages }}"

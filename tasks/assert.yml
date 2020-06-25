@@ -1,0 +1,85 @@
+---
+- name: test if dhcpd_ipv4_interface is set correctly
+  assert:
+    that:
+      - dhcpd_ipv4_interface is defined
+      - dhcpd_ipv4_interface | length > 0
+
+- name: test if dhcpd_default_lease_time is set correctly
+  assert:
+    that:
+      - dhcpd_default_lease_time is defined
+      - dhcpd_default_lease_time | int
+      - dhcpd_default_lease_time | int > 0
+
+- name: test if dhcpd_max_lease_time is set correctly
+  assert:
+    that:
+      - dhcpd_max_lease_time is defined
+      - dhcpd_max_lease_time | int
+      - dhcpd_max_lease_time | int > 0
+
+- name: test if dhcpd_subnet_mask is set correctly
+  assert:
+    that:
+      - dhcpd_subnet_mask is defined
+      - dhcpd_subnet_mask | length > 0
+
+- name: test if dhcpd_broadcast_address is set correctly
+  assert:
+    that:
+      - dhcpd_broadcast_address is defined
+      - dhcpd_broadcast_address | length > 0
+
+- name: test if dhcpd_routers is set correctly
+  assert:
+    that:
+      - dhcpd_routers is defined
+      - dhcpd_routers | length > 0
+
+- name: test if dhcpd_domain_name_servers is set correctly
+  assert:
+    that:
+      - dhcpd_domain_name_servers is defined
+      - dhcpd_domain_name_servers | length > 0
+
+- name: test if dhcpd_domain_search is set correctly
+  assert:
+    that:
+      - dhcpd_domain_search is defined
+      - dhcpd_domain_search | length > 0
+
+- name: test if dhcpd_filename is set correctly
+  assert:
+    that:
+      - dhcpd_filename is defined
+      - dhcpd_filename | length > 0
+
+- name: test if dhcpd_next_server is set correctly
+  assert:
+    that:
+      - dhcpd_next_server is defined
+      - dhcpd_next_server | length > 0
+
+- name: test if dhcpd_subnets is set correctly
+  assert:
+    that:
+      - dhcpd_subnets | length > 0
+      - dhcpd_subnets is iterable
+  when:
+    - dhcpd_subnets is defined
+
+- name: test if item in dhcpd_subnets is set correctly
+  assert:
+    that:
+      - item.network is defined
+      - item.network | length > 0
+      - item.netmask is defined
+      - item.netmask | length > 0
+      - item.range_start is defined
+      - item.range_start | length > 0
+      - item.range_end is defined
+      - item.range_end | length > 0
+  loop: "{{ dhcpd_subnets }}"
+  when:
+    - dhcpd_subnets is defined
