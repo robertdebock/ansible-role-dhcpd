@@ -76,10 +76,6 @@
       - item.network | length > 0
       - item.netmask is defined
       - item.netmask | length > 0
-      - item.range_start is defined
-      - item.range_start | length > 0
-      - item.range_end is defined
-      - item.range_end | length > 0
   loop: "{{ dhcpd_subnets }}"
   when:
     - dhcpd_subnets is defined
