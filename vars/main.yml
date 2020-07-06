@@ -1,5 +1,6 @@
 ---
 # vars file for dhcpd
+
 _dhcpd_packages:
   default:
     - dhcp
