@@ -78,5 +78,7 @@
       - item.netmask | length > 0
     quiet: yes
   loop: "{{ dhcpd_subnets }}"
+  loop_control:
+    label "{{ item.network }}"
   when:
     - dhcpd_subnets is defined

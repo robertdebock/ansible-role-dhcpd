@@ -28,8 +28,8 @@
     backup: yes
   notify: restart dhcpd
 
-- name: start and enable software
-  service:
-    name: "{{ dhcpd_service }}"
-    state: started
-    enabled: yes
+# - name: start and enable software
+#   service:
+#     name: "{{ dhcpd_service }}"
+#     state: started
+#     enabled: yes
