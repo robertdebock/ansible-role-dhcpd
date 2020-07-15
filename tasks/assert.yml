@@ -79,6 +79,6 @@
     quiet: yes
   loop: "{{ dhcpd_subnets }}"
   loop_control:
-    label "{{ item.network }}"
+    label: "{{ item.network }}"
   when:
     - dhcpd_subnets is defined
