@@ -7,9 +7,6 @@
   package:
     name: "{{ dhcpd_packages }}"
     state: present
-  register: dhcpd_install_dhcpd_software
-  until: dhcpd_install_dhcpd_software is succeeded
-  retries: 3
 
 - name: configure defaults
   template:
