@@ -13,6 +13,7 @@
     src: "{{ dhcpd_defaults_src }}"
     dest: "{{ dhcpd_defaults_dest }}"
     backup: yes
+    mode: "0640"
   when:
     - ansible_os_family == "Debian" or
       ansible_distribution == "openSUSE Leap"
