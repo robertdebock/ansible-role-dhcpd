@@ -24,6 +24,7 @@
     src: dhcpd.conf.j2
     dest: "{{ dhcpd_confdir }}/dhcpd.conf"
     backup: yes
+    mode: "0640"
   notify: restart dhcpd
 
 - name: start and enable software
