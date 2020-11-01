@@ -1,4 +1,5 @@
 ---
-- robertdebock.apt_autostart
-- robertdebock.bootstrap
-- robertdebock.core_dependencies
+roles:
+  - name: robertdebock.apt_autostart
+  - name: robertdebock.bootstrap
+  - name: robertdebock.core_dependencies
