@@ -38,7 +38,7 @@ The machine needs to be prepared in CI this is done using `molecule/resources/pr
     - role: robertdebock.apt_autostart
     - role: robertdebock.core_dependencies
 ```
-```
+
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
 
 ## [Role Variables](#role-variables)
