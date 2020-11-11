@@ -10,7 +10,7 @@
   assert:
     that:
       - dhcpd_default_lease_time is defined
-      - dhcpd_default_lease_time | int
+      - dhcpd_default_lease_time is number
       - dhcpd_default_lease_time | int > 0
     quiet: yes
 
@@ -18,7 +18,7 @@
   assert:
     that:
       - dhcpd_max_lease_time is defined
-      - dhcpd_max_lease_time | int
+      - dhcpd_max_lease_time is number
       - dhcpd_max_lease_time | int > 0
     quiet: yes
 
