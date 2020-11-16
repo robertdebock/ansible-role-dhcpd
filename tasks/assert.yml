@@ -10,7 +10,7 @@
     that:
       - dhcpd_default_lease_time is defined
       - dhcpd_default_lease_time is number
-      - dhcpd_default_lease_time | int > 0
+      - dhcpd_default_lease_time > 0
     quiet: yes
 
 - name: test if dhcpd_max_lease_time is set correctly
@@ -18,7 +18,7 @@
     that:
       - dhcpd_max_lease_time is defined
       - dhcpd_max_lease_time is number
-      - dhcpd_max_lease_time | int > 0
+      - dhcpd_max_lease_time > 0
     quiet: yes
 
 - name: test if dhcpd_subnet_mask is set correctly
