@@ -3,7 +3,6 @@
   assert:
     that:
       - dhcpd_ipv4_interface is defined
-      - dhcpd_ipv4_interface | length > 0
     quiet: yes
 
 - name: test if dhcpd_default_lease_time is set correctly
@@ -26,55 +25,47 @@
   assert:
     that:
       - dhcpd_subnet_mask is defined
-      - dhcpd_subnet_mask | length > 0
     quiet: yes
 
 - name: test if dhcpd_broadcast_address is set correctly
   assert:
     that:
       - dhcpd_broadcast_address is defined
-      - dhcpd_broadcast_address | length > 0
     quiet: yes
 
 - name: test if dhcpd_routers is set correctly
   assert:
     that:
       - dhcpd_routers is defined
-      - dhcpd_routers | length > 0
     quiet: yes
 
 - name: test if dhcpd_domain_name_servers is set correctly
   assert:
     that:
       - dhcpd_domain_name_servers is defined
-      - dhcpd_domain_name_servers | length > 0
     quiet: yes
 
 - name: test if dhcpd_domain_search is set correctly
   assert:
     that:
       - dhcpd_domain_search is defined
-      - dhcpd_domain_search | length > 0
     quiet: yes
 
 - name: test if dhcpd_filename is set correctly
   assert:
     that:
       - dhcpd_filename is defined
-      - dhcpd_filename | length > 0
     quiet: yes
 
 - name: test if dhcpd_next_server is set correctly
   assert:
     that:
       - dhcpd_next_server is defined
-      - dhcpd_next_server | length > 0
     quiet: yes
 
 - name: test if dhcpd_subnets is set correctly
   assert:
     that:
-      - dhcpd_subnets | length > 0
       - dhcpd_subnets is iterable
     quiet: yes
   when:
@@ -84,9 +75,7 @@
   assert:
     that:
       - item.network is defined
-      - item.network | length > 0
       - item.netmask is defined
-      - item.netmask | length > 0
     quiet: yes
   loop: "{{ dhcpd_subnets }}"
   loop_control:
