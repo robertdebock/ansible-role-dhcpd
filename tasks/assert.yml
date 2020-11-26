@@ -1,4 +1,5 @@
 ---
+
 - name: test if dhcpd_ipv4_interface is set correctly
   assert:
     that:
