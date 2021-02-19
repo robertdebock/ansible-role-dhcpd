@@ -7,12 +7,12 @@
   delegate_to: localhost
 
 - name: install dhcpd software
-  package:
+  ansible.builtin.package:
     name: "{{ dhcpd_packages }}"
     state: present
 
 - name: configure defaults
-  template:
+  ansible.builtin.template:
     src: "{{ dhcpd_defaults_src }}"
     dest: "{{ dhcpd_defaults_dest }}"
     backup: yes
@@ -23,7 +23,7 @@
   notify: restart dhcpd
 
 - name: configure software
-  template:
+  ansible.builtin.template:
     src: dhcpd.conf.j2
     dest: "{{ dhcpd_confdir }}/dhcpd.conf"
     backup: yes

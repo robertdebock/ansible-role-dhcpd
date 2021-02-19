@@ -2,7 +2,7 @@
 # handlers file for dhcpd
 
 - name: restart dhcpd
-  service:
+  ansible.builtin.service:
     name: "{{ dhcpd_service }}"
     state: restarted
   when:
