@@ -12,8 +12,9 @@ _dhcpd_packages:
     - dhcp
   Red Hat Enterprise Linux-7:
     - dhcp
-  RedHat:
+  RedHat: &RHEL
     - dhcp-server
+  Rocky: *RHEL
   Suse:
     - dhcp-server
 
