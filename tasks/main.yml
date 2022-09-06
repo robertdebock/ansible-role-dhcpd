@@ -20,7 +20,8 @@
   when:
     - ansible_os_family == "Debian" or
       ansible_distribution == "openSUSE Leap"
-  notify: restart dhcpd
+  notify:
+    - Restart dhcpd
 
 - name: Configure software
   ansible.builtin.template:
@@ -28,7 +29,8 @@
     dest: "{{ dhcpd_confdir }}/dhcpd.conf"
     backup: yes
     mode: "0640"
-  notify: restart dhcpd
+  notify:
+    - Restart dhcpd
 
 - name: Start and enable software
   block:
