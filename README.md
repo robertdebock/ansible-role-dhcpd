@@ -2,9 +2,9 @@
 
 Install and configure dhcpd on your system.
 
-|GitHub|GitLab|Quality|Downloads|Version|
-|------|------|-------|---------|-------|
-|[![github](https://github.com/robertdebock/ansible-role-dhcpd/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-dhcpd/actions)|[![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-dhcpd/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-dhcpd)|[![quality](https://img.shields.io/ansible/quality/21853)](https://galaxy.ansible.com/robertdebock/dhcpd)|[![downloads](https://img.shields.io/ansible/role/d/21853)](https://galaxy.ansible.com/robertdebock/dhcpd)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-dhcpd.svg)](https://github.com/robertdebock/ansible-role-dhcpd/releases/)|
+|GitHub|GitLab|Downloads|Version|
+|------|------|---------|-------|
+|[![github](https://github.com/robertdebock/ansible-role-dhcpd/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-dhcpd/actions)|[![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-dhcpd/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-dhcpd)|[![downloads](https://img.shields.io/ansible/role/d/24474)](https://galaxy.ansible.com/robertdebock/dhcpd)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-dhcpd.svg)](https://github.com/robertdebock/ansible-role-dhcpd/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -117,7 +117,7 @@ The minimum version of Ansible required is 2.12, tests have been done to:
 - The current version.
 - The development version.
 
-If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-dhcpd/issues)
+If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-dhcpd/issues).
 
 ## [License](#license)
 
