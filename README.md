@@ -1,4 +1,4 @@
-# Ansible role [dhcpd](#dhcpd)
+# [Ansible role dhcpd](#dhcpd)
 
 Install and configure dhcpd on your system.
 
