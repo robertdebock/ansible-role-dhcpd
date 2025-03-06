@@ -23,7 +23,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
         netmask: "255.255.255.0"
 
   roles:
-    - role: ansible-role-dhcpd
+    - role: robertdebock.dhcpd
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/robertdebock/ansible-role-dhcpd/blob/master/molecule/default/prepare.yml):

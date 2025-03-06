@@ -10,4 +10,4 @@
         netmask: "255.255.255.0"
 
   roles:
-    - role: ansible-role-dhcpd
+    - role: robertdebock.dhcpd
