@@ -1,0 +1,13 @@
+digraph PhiloDilemma {
+  label = "Robert de Bock" ;
+  overlap=false
+  {
+    "dhcpd" [fillcolor=yellow style=filled penwidth=3]
+    "robertdebock.apt_autostart" [fillcolor=green style=filled]
+    "robertdebock.bootstrap" [fillcolor=green style=filled]
+    "robertdebock.core_dependencies" [fillcolor=green style=filled]
+  }
+  "dhcpd" -> "robertdebock.apt_autostart"
+  "dhcpd" -> "robertdebock.bootstrap"
+  "dhcpd" -> "robertdebock.core_dependencies"
+}
