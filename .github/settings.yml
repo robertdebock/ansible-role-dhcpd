@@ -5,4 +5,4 @@
 repository:
   description: Install and configure dhcpd on your system.
   homepage: https://robertdebock.nl/
-  topics: dhcp, network, iscdhcpserver, dhcpd, server, networking, system, ansible, molecule, tox, playbook
+  topics: dhcp, network, iscdhcpserver, dhcpd, server, networking, system, ansible, molecule, playbook
