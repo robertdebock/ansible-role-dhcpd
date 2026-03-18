@@ -19,7 +19,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 
   vars:
     dhcpd_subnets:
-      - network: "{{ ansible_default_ipv4.network }}"
+      - network: "{{ ansible_facts['default_ipv4'].network }}"
         netmask: "255.255.255.0"
 
   roles:
@@ -52,7 +52,7 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 # defaults file for dhcpd
 
 # Configuration settings for the daemon.
-dhcpd_ipv4_interface: "{{ ansible_default_ipv4.interface | default('eth0') }}"
+dhcpd_ipv4_interface: "{{ ansible_facts['default_ipv4'].interface | default('eth0') }}"
 
 # Setting applicable for the global scope.
 dhcpd_default_lease_time: 600
