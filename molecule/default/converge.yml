@@ -6,7 +6,7 @@
 
   vars:
     dhcpd_subnets:
-      - network: "{{ ansible_default_ipv4.network }}"
+      - network: "{{ ansible_facts['default_ipv4'].network }}"
         netmask: "255.255.255.0"
 
   roles:

@@ -19,7 +19,7 @@
     backup: true
     mode: "0640"
   when:
-    - ansible_os_family == "Debian" or
+    - ansible_facts['os_family'] == "Debian" or
       ansible_distribution == "openSUSE Leap"
   notify:
     - Restart dhcpd
