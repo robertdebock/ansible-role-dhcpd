@@ -20,7 +20,7 @@
     mode: "0640"
   when:
     - ansible_facts['os_family'] == "Debian" or
-      ansible_distribution == "openSUSE Leap"
+      ansible_facts['distribution'] == "openSUSE Leap"
   notify:
     - Restart dhcpd
 
